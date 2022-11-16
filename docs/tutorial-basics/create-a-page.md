@@ -2,6 +2,17 @@
 sidebar_position: 1
 ---
 
+# Prerequisites
+Joa plugins are written in C#, but you should be able to follow this tutorial without any knowledge of C#.
+
+# Setup environment
+- Download and install the .NET 7 SDK
+- Code Editor
+  - You can use any Code editor, for example Visual Studio Code, Visual Studio or Rider
+- Install the Joa plugin template with: ...
+- Create a new Project based on the template with: 
+- Add the Plugin output Path to your extisting Joa installation
+
 # Create a Page
 
 Add **Markdown or React** files to `src/pages` to create a **standalone page**:
