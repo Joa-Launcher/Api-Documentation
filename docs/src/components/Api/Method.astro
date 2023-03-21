@@ -1,0 +1,35 @@
+---
+const {signature, description} = Astro.props;
+---
+
+<div class="w-full flex flex-col bg-[color:var(--theme-bg-hover)] p-[20px] gap-[20px] rounded-[8px]">
+    <div class="flex justify-between w-full">
+        <p class="text-xl font-bold">{signature}</p>
+        <button id="dropDownButton"></button>
+    </div>
+    <div id="dropDown" class="hidden">
+        <p>{description}</p>
+    </div>
+</div>
+
+<script>
+    const elm = document.querySelectorAll<HTMLElement>("#dropDownButton");
+    const elements = Array.from(elm).map((x) => {
+        return {
+            button: x,
+            isExpanded: false,
+        };
+    });
+
+    elements.forEach((element) => {
+        element.button.addEventListener("click", () => {
+            element.isExpanded = !element.isExpanded;
+            let dropdown =
+                element.button.parentElement?.parentElement?.querySelector<HTMLElement>("#dropDown");
+
+            if (!dropdown) return;
+
+            dropdown.style.display = element.isExpanded ? "Block" : "None";
+        });
+    });
+</script>

@@ -34,7 +34,7 @@ that was provided by your plugin.
 
 ## Understanding the template
 Open the project in your favourite Editor 
-([Visual Studio Code](https://code.visualstudio.com/), 
+([Visual Studio Code](https://code.visuaxlstudio.com/), 
 [Rider](https://www.jetbrains.com/rider/), 
 [Visual Studio](https://visualstudio.microsoft.com/))
 

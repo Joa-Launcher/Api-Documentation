@@ -5,6 +5,7 @@ A Provider can be used at two points:
 1. It can be registered as a global provider
 2. It can be added to a step using the StepBuilder in a search result"
 ---
+import Method from "../../../../components/Api/Method.astro"
 
 Namespace: `JoaLauncher.Api.Providers`
 
@@ -18,6 +19,5 @@ public interface IProvider
 ```
 
 ## Methods
-| Name                                  | Description                                                                                                                      |
-|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| GetSearchResults(string searchString) | A performance critical method used to return search results. In most cases this method should only return cached search results. |
+
+<Method signature={"GetSearchResults(string searchString)"} description={"A performance critical method used to return search results. In most cases this method should only return cached search results."}></Method>
