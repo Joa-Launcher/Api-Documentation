@@ -39,6 +39,9 @@ export const SIDEBAR: Sidebar = {
         'Getting Started': [
             {text: 'Introduction', link: 'en/introduction'},
 			{text: 'Overview', link: 'en/overview'}
+        ],
+        'API Reference': [
+            {text: 'IProvider', link: 'en/api/iprovider'},
         ]
 	},
 };
