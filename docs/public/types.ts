@@ -24,16 +24,25 @@ export type apiException = {
 
 export type externType = {
     name: string,
-    url: string,
     genericParameters: apiType[]
 }
 
 export type apiType = {
+    namespace: string
     name: string,
     genericParameters: apiType[],
     url: string,
     description: string,
     methods: apiMethod[],
+    properties: apiProperty[],
+    signature: string
+}
+
+export type apiProperty = {
+    name: string,
+    description: string,
+    type: apiType | externType,
+    signature: string
 }
 
 export {}

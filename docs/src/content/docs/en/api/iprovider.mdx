@@ -2,20 +2,7 @@
 title: "IProvider Interface"
 description: "Docs intro"
 ---
-import {iprovider} from "../../../../../public/api.js";
-import Method from "../../../../components/Api/Method.astro"
+import {iProvider} from "../../../../../public/api.js";
+import Type from "../../../../components/Api/Type.astro"
 
-Namespace: `JoaLauncher.Api.Providers`
-
-A Provider has the job to provide search results.
-A Provider can be used at two points:
-1. It can be registered as a global provider
-2. It can be added to a step using the StepBuilder in a search result
-
-```csharp
-public interface IProvider
-```
-
-## Methods
-
-<Method method={iprovider.methods[0]}></Method>
+<Type type={iProvider}></Type>

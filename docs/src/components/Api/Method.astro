@@ -1,20 +1,21 @@
 ---
 import {Icon} from 'astro-icon'
 import {apiMethod, apiType, externType} from '../../../public/types'
+import TypeName from "./TypeName.astro";
+import CodeBlock from "./CodeBlock.astro";
 
-const {method}: { method: apiMethod } = Astro.props;
+interface Props{
+    method: apiMethod
+}
+
+const {method}: Props = Astro.props;
 
 
 ---
-{
-    function GetTypeName(type: apiType | externType){
-        if(type.genericParameters.length == 0)
-            return <a></a>
-        }
-}
-<div class="w-full flex flex-col bg-[color:var(--theme-bg-accent)] rounded-[8px]">
-    <div class="flex justify-between w-full p-[20px] cursor-pointer" id="dropDownButton">
-        <p class="text-base text-[1.2rem] font-bold">{method.signature}</p>
+
+<div class="w-full flex flex-col items-start bg-[#0d1117] rounded-[8px]">
+    <div class="flex justify-between w-full  cursor-pointer  pr-[20px]" id="dropDownButton">
+        <CodeBlock code={method.signature}></CodeBlock>
         <div class="h-10 w-10 ">
             <div id="dropDownIcon" class="w-full h-full">
                 <Icon name="mdi:chevron-down"/>
@@ -24,7 +25,7 @@ const {method}: { method: apiMethod } = Astro.props;
             </div>
         </div>
     </div>
-    <div id="dropDown" class="hidden p-[20px] pt-0">
+    <div id="dropDown" class="hidden p-[20px] pt-4 w-full">
         <p>{method.description}</p>
         {method.parameters.length != 0 && <p class="font-bold mt-3">Parameters</p>
                 <table>
@@ -35,7 +36,7 @@ const {method}: { method: apiMethod } = Astro.props;
                     </tr>
                     {method.parameters.map(p =>
                             <tr>
-                                <td> <a href={p.type.url}>{p.type.name}</a> {p.name}</td>
+                                <td> <TypeName type={p.type}></TypeName> {p.name}</td>
                                 <td>{p.description}</td>
                             </tr>
                     )}
@@ -51,7 +52,7 @@ const {method}: { method: apiMethod } = Astro.props;
                         <th>Description</th>
                     </tr>
                     <tr>
-                        <td>{method.returns.type.name}</td>
+                        <td><TypeName type={method.returns}></TypeName></td>
                         <td>{method.returns.description}</td>
                     </tr>
                     </thead>
@@ -66,7 +67,7 @@ const {method}: { method: apiMethod } = Astro.props;
                     </tr>
                     {method.exceptions.map(e =>
                             <tr>
-                                <td>{e.type.name}</td>
+                                <td><TypeName type={e.type}></TypeName></td>
                                 <td>{e.description}</td>
                             </tr>
                     )}

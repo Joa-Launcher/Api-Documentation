@@ -42,6 +42,7 @@ export const SIDEBAR: Sidebar = {
         ],
         'API Reference': [
             {text: 'IProvider', link: 'en/api/iprovider'},
+            {text: 'SearchResult', link: 'en/api/searchresult'},
         ]
 	},
 };
