@@ -1,6 +1,7 @@
 ---
 import { getLanguageFromURL } from '../../languages';
 import { SIDEBAR } from '../../consts';
+import {types} from "../../../public/api";
 
 type Props = {
 	currentPage: string;
@@ -15,7 +16,7 @@ const sidebar = SIDEBAR[langCode];
 ---
 
 <nav aria-labelledby="grid-left">
-	<ul class="nav-groups">
+	<ul class="nav-groups hide-scrollbar">
 		{
 			Object.entries(sidebar).map(([header, children]) => (
 				<li>
@@ -37,6 +38,23 @@ const sidebar = SIDEBAR[langCode];
 				</li>
 			))
 		}
+		<li>
+			<div class="nav-group">
+				<h4>Api</h4>
+				<ul>
+					{types.map((type) => {
+						const url = Astro.site?.pathname + "/api/" + type.name.toLowerCase();
+						return (
+							<li class="nav-link">
+								<a href={url} aria-current={currentPageMatch === type.name.toLowerCase() ? 'page' : false}>
+									{type.name}
+								</a>
+							</li>
+						);
+					})}
+				</ul>
+			</div>
+		</li>
 	</ul>
 </nav>
 
@@ -50,6 +68,16 @@ const sidebar = SIDEBAR[langCode];
 </script>
 
 <style>
+	.hide-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.hide-scrollbar {
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
+	}
+
 	nav {
 		width: 100%;
 		margin-right: 1rem;

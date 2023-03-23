@@ -1,0 +1,24 @@
+---
+import * as fs from "fs";
+import YAML from 'yaml';
+import {ymlRoot} from "../../../public/ymlType";
+import {apiProperty, apiType} from "../../../public/types";
+import MainLayout from "../../layouts/MainLayout.astro";
+import {types} from "../../../public/api";
+
+export function getStaticPaths() {
+    return types.map(t => {
+        return {
+            params: {type: t.name.toLowerCase()}
+        }
+    })
+}
+
+const { type } = Astro.params;
+
+---
+<MainLayout>
+    <div>{type}</div>
+</MainLayout>
+
+

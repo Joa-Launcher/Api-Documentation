@@ -35,13 +35,17 @@ export type apiType = {
     description: string,
     methods: apiMethod[],
     properties: apiProperty[],
-    signature: string
+    signature: string,
+    type: "interface" | "class" | "enum" | "record"
 }
 
 export type apiProperty = {
     name: string,
     description: string,
-    type: apiType | externType,
+    type: {
+        name: string,
+        url: string
+    }
     signature: string
 }
 
