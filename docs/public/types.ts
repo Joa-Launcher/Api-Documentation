@@ -3,17 +3,23 @@ export type apiMethod = {
     description: string,
     parameters: apiParameter[],
     returns: apiReturn,
-    exceptions: apiException[]
+    // exceptions: apiException[]
 }
 
 export type apiParameter = {
     name: string
-    type: apiType | externType,
+    type: {
+        name: string,
+        url: string
+    },
     description: string
 }
 
 export type apiReturn = {
-    type: apiType | externType,
+    type: {
+        name: string,
+        url: string
+    },
     description: string
 }
 

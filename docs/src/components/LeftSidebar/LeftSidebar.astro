@@ -8,9 +8,9 @@ type Props = {
 };
 
 const { currentPage } = Astro.props;
-const currentPageMatch = currentPage.endsWith('/')
+const currentPageMatch = decodeURI(currentPage.endsWith('/')
 	? currentPage.slice(1, -1)
-	: currentPage.slice(1);
+	: currentPage.slice(1));
 const langCode = getLanguageFromURL(currentPage);
 const sidebar = SIDEBAR[langCode];
 ---
@@ -40,13 +40,13 @@ const sidebar = SIDEBAR[langCode];
 		}
 		<li>
 			<div class="nav-group">
-				<h4>Api</h4>
+				<h4>API Reference</h4>
 				<ul>
 					{types.map((type) => {
-						const url = Astro.site?.pathname + "/api/" + type.name.toLowerCase();
+						const url = Astro.site?.pathname + type.url;
 						return (
 							<li class="nav-link">
-								<a href={url} aria-current={currentPageMatch === type.name.toLowerCase() ? 'page' : false}>
+								<a href={url} aria-current={currentPageMatch === type.url ? 'page' : false}>
 									{type.name}
 								</a>
 							</li>

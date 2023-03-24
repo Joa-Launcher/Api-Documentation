@@ -1,6 +1,6 @@
 import fs from "fs";
 import YAML from "yaml";
-import type {apiProperty, apiType} from "./types";
+import type {apiMethod, apiProperty, apiType} from "./types";
 import type {ymlRoot} from "./ymlType";
 
 const types : apiType[] = [];
@@ -33,7 +33,7 @@ files.forEach(p => {
                 type: getType(i.type),
                 name: i.name,
                 description : i.summary ?? "",
-                url : "/" + i.name.toLowerCase(),
+                url : "types/" + i.name,
                 namespace : i.parent,
                 methods : [],
                 genericParameters : [],
@@ -52,6 +52,30 @@ files.forEach(p => {
                 name: i.name
             }
             type.properties.push(property)
+        }
+        if(i.type === "Method" && type){
+            let method : apiMethod = {
+                signature: i.syntax.content,
+                description: i.summary ?? "",
+                returns: {
+                    type: {
+                        name: i.syntax.return?.type ?? "test",
+                        url: ""
+                    },
+                    description: i.syntax.return?.description ?? ""
+                },
+                parameters: i.syntax.parameters?.map(x => {
+                    return {
+                        name: x.id,
+                        description: x.description,
+                        type: {
+                            name: x.type,
+                            url: ""
+                        }
+                    }
+                }) ?? [],
+            }
+            type.methods.push(method)
         }
     })
 

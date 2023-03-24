@@ -58,22 +58,6 @@ const {method}: Props = Astro.props;
                     </thead>
                 </table>
         }
-        {method.exceptions.length != 0 && <p class="font-bold mt-3">Exceptions</p>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                    {method.exceptions.map(e =>
-                            <tr>
-                                <td><TypeName type={e.type}></TypeName></td>
-                                <td>{e.description}</td>
-                            </tr>
-                    )}
-                    </thead>
-                </table>
-        }
     </div>
 </div>
 
