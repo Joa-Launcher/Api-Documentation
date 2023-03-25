@@ -52,7 +52,7 @@ const {method}: Props = Astro.props;
                         <th>Description</th>
                     </tr>
                     <tr>
-                        <td><TypeName type={method.returns}></TypeName></td>
+                        <td><TypeName type={method.returns.type}></TypeName></td>
                         <td>{method.returns.description}</td>
                     </tr>
                     </thead>

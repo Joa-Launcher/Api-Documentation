@@ -5,16 +5,11 @@ interface Props {
 }
 
 const {type} = Astro.props;
+
+console.log(type)
 ---
-{
-    type.url ?
-    <>
-        <a href={type.url}>{type.name}</a>
-        {type.genericParams.length != 0 && "<"}
-        {type.genericParams.map(x => <Astro.self type={x}></Astro.self>)}
-        {type.genericParams.length != 0 && ">"}
-    </>
-
-
-        : "void"}
-
+<a href={type.url}>{type.name}</a>{type.genericParams && type.genericParams.length != 0 &&
+<>
+    <span><</span>{type.genericParams && type.genericParams.map(x =>
+        <Astro.self type={x}></Astro.self>)}<span>></span>
+</>}

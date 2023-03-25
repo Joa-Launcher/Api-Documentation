@@ -1,3 +1,4 @@
+/** @jsxImportSource preact */
 import type { MarkdownHeading } from 'astro';
 import type { FunctionalComponent } from 'preact';
 import { unescape } from 'html-escaper';

@@ -26,13 +26,7 @@ files.forEach(p => {
     })
 })
 
-const getApiType = (type: string | undefined): apiType2  => {
-    if(!type)
-        return {
-            name: "void",
-            genericParams: []
-        }
-
+const getApiType = (type: string): apiType2  => {
     const generics = extractGenerics(type)
     const typeName = type.split("{")[0]
 
@@ -42,6 +36,7 @@ const getApiType = (type: string | undefined): apiType2  => {
         genericParams: generics.map(x => getApiType(x))
     }
 }
+
 
 function extractGenerics(input: string): string[] {
     let result: string[] = [];
@@ -112,9 +107,10 @@ yamls.forEach(yaml => {
             }
         }
         if (i.type === "Property" && type) {
-            console.log(i.syntax.return?.type)
+            if(!i.syntax.return)
+                throw "Property must have return type"
             let property: apiProperty = {
-                type: getApiType(i.syntax.return?.type),
+                type: getApiType(i.syntax.return.type),
                 signature: i.syntax.content,
                 description: i.summary ?? "",
                 name: i.name
@@ -125,10 +121,10 @@ yamls.forEach(yaml => {
             let method: apiMethod = {
                 signature: i.syntax.content,
                 description: i.summary ?? "",
-                returns: {
-                    type: getApiType(i.syntax.return?.type),
-                    description: i.syntax.return?.description ?? ""
-                },
+                returns: i.syntax.return ? {
+                    type: getApiType(i.syntax.return.type),
+                    description: i.syntax.return.description ?? ""
+                } : undefined,
                 parameters: i.syntax.parameters?.map(x => {
                     return {
                         name: x.id,

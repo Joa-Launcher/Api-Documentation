@@ -2,7 +2,7 @@ export type apiMethod = {
     signature: string,
     description: string,
     parameters: apiParameter[],
-    returns: apiReturn | undefined,
+    returns?: apiReturn,
     // exceptions: apiException[]
 }
 
@@ -14,7 +14,7 @@ export type apiParameter = {
 
 export type apiType2 = {
     name: string,
-    url?: string,
+    url: string,
     genericParams: apiType2[]
 }
 
