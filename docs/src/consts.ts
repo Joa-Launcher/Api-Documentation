@@ -19,7 +19,7 @@ export const KNOWN_LANGUAGES = {
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
-export const GITHUB_EDIT_URL = `https://github.com/withastro/astro/tree/main/examples/docs`;
+export const GITHUB_EDIT_URL = `https://github.com/Joa-Launcher/Api-Documentation/blob/develop/docs`;
 
 export const SUB_URL = "/Api-Documentation"
 
