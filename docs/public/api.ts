@@ -99,7 +99,7 @@ yamls.forEach(yaml => {
                 type: getType(i.type),
                 name: i.name,
                 description: i.summary ?? "",
-                url: SUB_URL + "types/" + i.name,
+                url: SUB_URL + "/types/" + i.name,
                 namespace: i.parent,
                 methods: [],
                 genericParameters: [],
