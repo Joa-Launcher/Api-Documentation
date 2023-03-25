@@ -48,7 +48,7 @@ const sidebar = SIDEBAR[langCode];
                 <h4>API Reference</h4>
                 <ul>
                     {
-                        namespaces.map(namespace => (
+                        namespaces.reverse().map(namespace => (
                                 <li>
                                     <p class="nav-link font-bold">{namespace.name.split(".").slice(-1)}</p>
                                     <ul>
@@ -68,6 +68,7 @@ const sidebar = SIDEBAR[langCode];
                                             );
                                         })}
                                     </ul>
+                                    <br/>
                                 </li>
                         ))
                     }
@@ -111,8 +112,8 @@ const sidebar = SIDEBAR[langCode];
     }
 
     .nav-groups > :last-child {
-        padding-bottom: 2rem;
-        margin-bottom: var(--theme-navbar-height);
+        /*padding-bottom: 2rem;*/
+        /*margin-bottom: var(--theme-navbar-height);*/
     }
 
     .nav-group-title {

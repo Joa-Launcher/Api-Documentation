@@ -20,17 +20,9 @@ export const KNOWN_LANGUAGES = {
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
 export const GITHUB_EDIT_URL = `https://github.com/Joa-Launcher/Api-Documentation/blob/develop/docs`;
+export const GITHUB_CODE_URL = `https://github.com/Joa-Launcher/Plugin-Api/blob/develop`;
 
 export const SUB_URL = "/Api-Documentation"
-
-export const COMMUNITY_INVITE_URL = `https://astro.build/chat`;
-
-// See "Algolia" section of the README for more information.
-export const ALGOLIA = {
-    indexName: 'XXXXXXXXXX',
-    appId: 'XXXXXXXXXX',
-    apiKey: 'XXXXXXXXXX',
-};
 
 export type Sidebar = Record<
     (typeof KNOWN_LANGUAGE_CODES)[number],
