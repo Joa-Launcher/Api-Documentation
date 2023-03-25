@@ -1,8 +1,9 @@
 ---
+import {SUB_URL} from "../../consts";
 type Props = {
 	size: number;
 };
 const { size } = Astro.props;
 ---
 
-<img height={size} width={size} src="/joa_small.png" alt="Joa Logo">
+<img height={size} width={size} src=`${SUB_URL}/joa_small.png` alt="Joa Logo">
