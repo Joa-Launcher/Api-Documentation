@@ -2,35 +2,25 @@ export type apiMethod = {
     signature: string,
     description: string,
     parameters: apiParameter[],
-    returns: apiReturn,
+    returns: apiReturn | undefined,
     // exceptions: apiException[]
 }
 
 export type apiParameter = {
     name: string
-    type: {
-        name: string,
-        url: string
-    },
+    type: apiType2,
     description: string
+}
+
+export type apiType2 = {
+    name: string,
+    url?: string,
+    genericParams: apiType2[]
 }
 
 export type apiReturn = {
-    type: {
-        name: string,
-        url: string
-    },
+    type: apiType2,
     description: string
-}
-
-export type apiException = {
-    type: apiType | externType,
-    description: string
-}
-
-export type externType = {
-    name: string,
-    genericParameters: apiType[]
 }
 
 export type apiType = {
@@ -48,10 +38,7 @@ export type apiType = {
 export type apiProperty = {
     name: string,
     description: string,
-    type: {
-        name: string,
-        url: string
-    }
+    type: apiType2
     signature: string
 }
 

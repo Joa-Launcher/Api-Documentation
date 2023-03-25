@@ -19,8 +19,7 @@ const { type } = Astro.params;
 const apiType = types.filter(value => value.name === type)[0]
 
 ---
-<MainLayout>
-    <h1>{type}</h1>
+<MainLayout title={type}>
     <Type type={apiType}></Type>
 </MainLayout>
 

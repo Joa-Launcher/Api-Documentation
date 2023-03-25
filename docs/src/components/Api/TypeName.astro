@@ -1,10 +1,20 @@
 ---
-import {apiType, externType} from "../../../public/types";
+import {apiType, apiType2} from "../../../public/types";
 interface Props {
-    type: apiType | externType
+    type: apiType2
 }
 
 const {type} = Astro.props;
 ---
+{
+    type.url ?
+    <>
+        <a href={type.url}>{type.name}</a>
+        {type.genericParams.length != 0 && "<"}
+        {type.genericParams.map(x => <Astro.self type={x}></Astro.self>)}
+        {type.genericParams.length != 0 && ">"}
+    </>
 
-{"url" in type ? <a href={type.url}>{type.name}</a> : "name" in type ? type.name : "void"}
+
+        : "void"}
+

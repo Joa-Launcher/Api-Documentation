@@ -43,34 +43,38 @@ const sidebar = SIDEBAR[langCode];
                     </li>
             ))
         }
-        {
-            namespaces.map(namespace => (
-                    <li>
-                        <div class="nav-group">
-                            <h4>{
-                                namespace.name.split(".").slice(-1)
-                            }</h4>
-                            <ul>
-                                {namespace.types.map((type) => {
-                                    const url = Astro.site?.pathname + type.url;
-                                    return (
-                                            <li class="nav-link">
-                                                <a
-                                                        href={url}
-                                                        aria-current={
-                                                            currentPageMatch === type.url ? "page" : false
-                                                        }
-                                                >
-                                                    {type.name}
-                                                </a>
-                                            </li>
-                                    );
-                                })}
-                            </ul>
-                        </div>
-                    </li>
-            ))
-        }
+        <li>
+            <div class="nav-group">
+                <h4>API Reference</h4>
+                <ul>
+                    {
+                        namespaces.map(namespace => (
+                                <li>
+                                    <p class="nav-link font-bold">{namespace.name.split(".").slice(-1)}</p>
+                                    <ul>
+                                        {namespace.types.map((type) => {
+                                            const url = Astro.site?.pathname + type.url;
+                                            return (
+                                                    <li class="nav-link">
+                                                        <a
+                                                                href={url}
+                                                                aria-current={
+                                                                    currentPageMatch === type.url ? "page" : false
+                                                                }
+                                                        >
+                                                            {type.name}
+                                                        </a>
+                                                    </li>
+                                            );
+                                        })}
+                                    </ul>
+                                </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </li>
+
 
     </ul>
 </nav>

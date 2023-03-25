@@ -1,6 +1,6 @@
 ---
 import {Icon} from 'astro-icon'
-import {apiMethod, apiType, externType} from '../../../public/types'
+import {apiMethod} from '../../../public/types'
 import TypeName from "./TypeName.astro";
 import CodeBlock from "./CodeBlock.astro";
 
@@ -36,7 +36,7 @@ const {method}: Props = Astro.props;
                     </tr>
                     {method.parameters.map(p =>
                             <tr>
-                                <td> <TypeName type={p.type}></TypeName> {p.name}</td>
+                                <td><TypeName type={p.type}></TypeName> {p.name}</td>
                                 <td>{p.description}</td>
                             </tr>
                     )}
