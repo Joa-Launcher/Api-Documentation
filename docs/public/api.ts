@@ -3,7 +3,7 @@ import YAML from "yaml";
 import type {apiMethod, apiProperty, apiType} from "./types";
 import type {ymlRoot} from "./ymlType";
 
-const types : apiType[] = [];
+const types: apiType[] = [];
 const files = fs.readdirSync("./api");
 
 files.forEach(p => {
@@ -12,37 +12,37 @@ files.forEach(p => {
 
     let type: apiType | undefined;
 
-    const getType = (t: string) : "interface" | "class" | "enum" | "record" => {
-        if(t === "Interface")
+    const getType = (t: string): "interface" | "class" | "enum" | "record" => {
+        if (t === "Interface")
             return "interface"
-        if(t === "Class")
+        if (t === "Class")
             return "class"
-        if(t === "Enum")
+        if (t === "Enum")
             return "enum"
-        if(t === "Record")
+        if (t === "Record")
             return "record"
         throw "Unknown type: " + t;
     }
 
-    if(!yaml.items)
+    if (!yaml.items)
         return;
 
     yaml.items.forEach(i => {
-        if(i.type === "Interface" || i.type === "Class" || i.type === "Enum" || i.type === "Record" ){
+        if (i.type === "Interface" || i.type === "Class" || i.type === "Enum" || i.type === "Record") {
             type = {
                 type: getType(i.type),
                 name: i.name,
-                description : i.summary ?? "",
-                url : "types/" + i.name,
-                namespace : i.parent,
-                methods : [],
-                genericParameters : [],
-                properties : [],
+                description: i.summary ?? "",
+                url: "types/" + i.name,
+                namespace: i.parent,
+                methods: [],
+                genericParameters: [],
+                properties: [],
                 signature: i.syntax.content
             }
         }
-        if(i.type === "Property" && type){
-            let property : apiProperty = {
+        if (i.type === "Property" && type) {
+            let property: apiProperty = {
                 type: {
                     name: i.syntax.return?.type ?? "property does not return",
                     url: ""
@@ -53,8 +53,8 @@ files.forEach(p => {
             }
             type.properties.push(property)
         }
-        if(i.type === "Method" && type){
-            let method : apiMethod = {
+        if (i.type === "Method" && type) {
+            let method: apiMethod = {
                 signature: i.syntax.content,
                 description: i.summary ?? "",
                 returns: {
@@ -79,15 +79,21 @@ files.forEach(p => {
         }
     })
 
-    if(type)
+    if (type)
         types.push(type)
 })
 
-console.log("TEST")
-types.forEach(x => {
-    console.log(x.name)
+const namespaces: { name: string, types: apiType[] }[] = []
+
+types.forEach(type => {
+    const existingNamespace = namespaces.find(x => x.name === type.namespace);
+    if(existingNamespace){
+        existingNamespace.types.push(type)
+        return;
+    }
+    namespaces.push({name: type.namespace, types: [type]})
 })
 
+// console.log(namespaces)
 
-
-export {types}
+export {types, namespaces}
