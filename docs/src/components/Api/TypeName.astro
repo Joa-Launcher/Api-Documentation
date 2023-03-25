@@ -6,7 +6,6 @@ interface Props {
 
 const {type} = Astro.props;
 
-console.log(type)
 ---
 <a href={type.url}>{type.name}</a>{type.genericParams && type.genericParams.length != 0 &&
 <>
