@@ -2,6 +2,7 @@ import fs from "fs";
 import YAML from "yaml";
 import type {apiMethod, apiProperty, apiType, apiType2} from "./types";
 import type {ymlRoot} from "./ymlType";
+import {URL} from "../src/consts";
 
 const types: apiType[] = [];
 const files = fs.readdirSync("./api");
@@ -69,7 +70,7 @@ const getUrl = (type: string | undefined)  => {
         return "void"
     }
     if(typesNames.find(x => x == type)){
-        return "/types/" + type.split(".").slice(-1)
+        return URL + "/types/" + type.split(".").slice(-1)
     }
     return "https://learn.microsoft.com/en-us/dotnet/api/" + type.toLowerCase();
 }
@@ -98,7 +99,7 @@ yamls.forEach(yaml => {
                 type: getType(i.type),
                 name: i.name,
                 description: i.summary ?? "",
-                url: "types/" + i.name,
+                url: URL + "types/" + i.name,
                 namespace: i.parent,
                 methods: [],
                 genericParameters: [],
