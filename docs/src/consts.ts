@@ -32,7 +32,8 @@ export const SIDEBAR: Sidebar = {
     en: {
         'Getting Started': [
             {text: 'Introduction', link: SUB_URL + '/en/introduction'},
-			{text: 'Overview', link: SUB_URL + '/en/overview'}
+			{text: 'Overview', link: SUB_URL + '/en/overview'},
+			{text: 'Settings', link: SUB_URL + '/en/settings'}
         ]
 	},
 };
