@@ -10,5 +10,6 @@ export default defineConfig({
     // Enable Preact to support Preact JSX components.
     preact(),
     , mdx(), tailwind()],
-  site: `https://astro.build`
+  site: `https://Joa-Launcher.github.io`,
+  base: `Api-Documentation`
 });
