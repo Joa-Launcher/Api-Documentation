@@ -1,5 +1,7 @@
 # Website
 
+https://joa-launcher.github.io/Api-Documentation/en/introduction/
+
 ## Generate Api YAML Files
 
 ```
