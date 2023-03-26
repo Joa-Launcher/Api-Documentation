@@ -48,7 +48,7 @@ const sidebar = SIDEBAR[langCode];
                 <h4>API Reference</h4>
                 <ul>
                     {
-                        namespaces.reverse().map(namespace => (
+                        namespaces.map(namespace => (
                                 <li>
                                     <p class="nav-link font-bold">{namespace.name.split(".").slice(-1)}</p>
                                     <ul>

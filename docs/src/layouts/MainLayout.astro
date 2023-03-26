@@ -17,8 +17,6 @@ const {headings, ...data} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPage = Astro.url.pathname;
 
-console.log(currentPage)
-
 let githubEditUrl: string;
 
 if (currentPage.includes("/types/")) {

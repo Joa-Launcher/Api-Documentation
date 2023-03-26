@@ -2,8 +2,11 @@
 title: "Overview"
 description: "How Steps, Providers and Search Result hang together"
 ---
+import CodeReference from '../../../components/CodeReference.astro'
+export const components = {code: CodeReference}
 
-The architecture of Joa can be a bit confusing, so lets try to clear it up a bit with 
+
+The architecture of Joa can be a bit confusing, so lets try to clear it up a bit with
 this diagram.
 
 Steps are a collection of providers, providers provide search results.
@@ -13,9 +16,9 @@ come from multiple different providers. Together they are known as the global st
 
 There are multiple ways you can add a provider to a step. For example if you want to
 add a provider to the global step, you need to call the `AddGlobalProvider` method on
-the `IPluginBuilder`. The search result that this provider provides will then appear in the 
+the `IPluginBuilder`. The search result that this provider provides will then appear in the
 global step. The global step is special, if you want to create another step, you can do this via
-the `AddStepBuilder()` method on the `ExecutionContext`. On the `IStepBuilder` you can then add 
-providers with the `AddProvider()` method.
+the `AddStepBuilder` method on the `IExecutionContext`. On the `IStepBuilder` you can then add
+providers with the `AddProvider` method.
 
 

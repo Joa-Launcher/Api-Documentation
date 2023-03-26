@@ -17,7 +17,6 @@ export function getStaticPaths() {
 
 const { type } = Astro.params;
 const apiType = types.filter(value => value.name === type)[0]
-
 ---
 <MainLayout title={type}>
     <Type type={apiType}></Type>
