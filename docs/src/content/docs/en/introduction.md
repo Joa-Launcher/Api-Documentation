@@ -3,7 +3,7 @@ title: "Getting started"
 description: "Docs intro"
 ---
 
-**Welcome to the Joa Plugin Api Documentation!**
+**Welcome to the Joa Plugin API Documentation!**
 
 
 ## Intro
