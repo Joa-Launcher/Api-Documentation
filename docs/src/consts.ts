@@ -34,6 +34,7 @@ export const SIDEBAR: Sidebar = {
             {text: 'Introduction', link: SUB_URL + '/en/introduction'},
 			{text: 'Overview', link: SUB_URL + '/en/overview'},
 			{text: 'Settings', link: SUB_URL + '/en/settings'},
+		        {text: 'Index', link: SUB_URL + '/en/index'},
 			{text: 'Dependency Injection', link: SUB_URL + '/en/dependency_injection'}
         ]
 	},
